@@ -43,9 +43,9 @@ class LoginFragment : Fragment() {
             if (it.isConsumed){
                 Log.i("Login","isConsumed")
             } else if(!it.isSuccess) {
-                Toast.makeText(parent, it.massage, Toast.LENGTH_SHORT).show()
+                Toast.makeText(parent, it.message, Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(parent, it.massage, Toast.LENGTH_SHORT).show()
+                Toast.makeText(parent, it.message, Toast.LENGTH_SHORT).show()
                 parent.onSuccess(it.data)
             }
             it.isConsumed = true

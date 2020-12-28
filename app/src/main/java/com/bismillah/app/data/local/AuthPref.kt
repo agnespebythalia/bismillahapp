@@ -28,29 +28,38 @@ class AuthPref(val context: Context) {
     suspend fun login(email: String, password: String): ActionState<AuthUser> {
         val user = authUser
         return if (user == null) {
-            ActionState(massage = "anda belum terdaftar", isSuccess = false)
+            ActionState(message = "anda belum terdaftar", isSuccess = false)
         } else if (email.isBlank() || password.isBlank()) {
-            ActionState(massage = "email dan password tidak boleh kosong", isSuccess = false)
+            ActionState(
+                message = "email dan password tidak boleh kosong",
+                isSuccess = false
+            )
         } else if (user.email == email && user.password == password) {
             isLogin = true
-            ActionState(authUser, massage = "anda berhasil login")
+            ActionState(authUser, message = "anda berhasil login")
         } else {
-            ActionState(massage = " email atau password salah", isSuccess = false)
+            ActionState(
+                message = " email atau password salah",
+                isSuccess = false
+            )
         }
     }
 
     suspend fun register(user: AuthUser): ActionState<AuthUser> {
         return if (user.email.isBlank() || user.password.isBlank()) {
-            ActionState(massage = "email dan password tidak boleh kosong", isSuccess = false)
+            ActionState(
+                message = "email dan password tidak boleh kosong",
+                isSuccess = false
+            )
         } else {
             authUser = user
-            ActionState(user, massage = "anda berhasil daftar")
+            ActionState(user, message = "anda berhasil daftar")
         }
     }
 
     suspend fun logout():ActionState<Boolean>{
         isLogin = false
-        return ActionState(true, massage = "anda berhasil logout")
+        return ActionState(true, message = "anda berhasil logout")
     }
 
 }

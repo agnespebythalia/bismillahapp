@@ -43,9 +43,9 @@ class RegisterFragment : Fragment() {
             if (it.isConsumed){
                 Log.i("Register","isConsumed")
             } else if(!it.isSuccess) {
-                Toast.makeText(parent, it.massage, Toast.LENGTH_SHORT).show()
+                Toast.makeText(parent, it.message, Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(parent, it.massage, Toast.LENGTH_SHORT).show()
+                Toast.makeText(parent, it.message, Toast.LENGTH_SHORT).show()
                 findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
             }
             it.isConsumed = true
